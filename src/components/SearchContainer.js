@@ -1,5 +1,7 @@
 import React from 'react';
 
+import axios from 'axios';
+
 import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
 
@@ -16,7 +18,7 @@ class SearchContainer extends React.Component {
   searchMovieByTitle = (title) => {
     console.log(`searching for ${title}`);
 
-    
+
     this.setState({
       movies: [
         {title: 'Movie 1'},
