@@ -5,6 +5,8 @@ import axios from 'axios';
 import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
 
+const SEARCH_URL = 'http://localhost:3000/movies?query=';
+
 class SearchContainer extends React.Component {
 
   constructor() {
@@ -18,20 +20,34 @@ class SearchContainer extends React.Component {
   searchMovieByTitle = (title) => {
     console.log(`searching for ${title}`);
 
+    axios.get(SEARCH_URL + title)
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          movies: response.data
+        })
+      })
+      .catch((error) => {
+        console.log('failure response');
+        console.log(error);
+      });
+  }
 
-    this.setState({
-      movies: [
-        {title: 'Movie 1'},
-        {title: 'Movie 2'},
-      ]
-    });
+  addMovieToLibrary = (movieId) => {
+    const movie = this.state.movies.find(movie => movie.external_id === movieId);
+
+    console.log(`Adding movie ${movie.title} to library`);
+    // TODO: actually add the movie
   }
 
   render() {
     return (
-      <div>
+      <div className="item-list">
         <SearchBar searchCallback={this.searchMovieByTitle} />
-        <SearchResults movies={this.state.movies} />
+        <SearchResults
+          movies={this.state.movies}
+          addToLibraryCallback={this.addMovieToLibrary}
+          />
       </div>
     );
   }
