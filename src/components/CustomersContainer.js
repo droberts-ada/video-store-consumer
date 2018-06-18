@@ -1,4 +1,5 @@
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import ItemList from './ItemList';
@@ -7,6 +8,10 @@ import Customer from './Customer';
 const CUSTOMERS_URL = 'http://localhost:3000/customers'
 
 class CustomersContainer extends React.Component {
+  static propTypes = {
+    selectCustomer: PropTypes.func.isRequired
+  }
+
   constructor() {
     super();
 
@@ -33,7 +38,7 @@ class CustomersContainer extends React.Component {
     console.log('Customer selected');
     console.log(customer_id);
 
-    const customer = this.state.customers.find((customer) => customer.id == customer_id )
+    const customer = this.state.customers.find((customer) => customer.id === customer_id )
 
     this.props.selectCustomer(customer);
 

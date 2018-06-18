@@ -8,7 +8,7 @@
   display: none;
 }
 
-.status-bar--error: {
+.status-bar--error {
   background-color: rgb(245, 160, 160);
 }
 

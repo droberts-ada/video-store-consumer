@@ -40,7 +40,7 @@ class LibraryContainer extends React.Component {
     console.log('Movie selected');
     console.log(external_id);
 
-    const movie = this.state.movies.find((movie) => movie.external_id == external_id )
+    const movie = this.state.movies.find((movie) => movie.external_id === external_id )
 
     this.props.selectMovie(movie);
   }

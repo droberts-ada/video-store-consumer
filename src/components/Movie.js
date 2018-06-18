@@ -6,7 +6,8 @@ import './Movie.css';
 const Movie = (props) => {
   return (
     <div className="movie item">
-      <img src={props.image_url} />
+      <img src={props.image_url}
+        alt="movie poster" />
       <div className="details">
         <h2>{props.title}</h2>
         <p>{props.release_date}</p>
