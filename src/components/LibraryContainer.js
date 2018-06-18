@@ -29,7 +29,7 @@ class LibraryContainer extends React.Component {
       });
   }
 
-  buttonClickHandler = (movie) => {
+  selectMovie = (movie) => {
     console.log('Movie selected');
     console.log(movie);
   }

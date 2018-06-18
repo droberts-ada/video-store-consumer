@@ -13,7 +13,7 @@ const ItemList = ({items, ItemComponent, buttonText, buttonClickHandler}) => {
     );
   });
   return (
-    <div className="search-results">
+    <div className="item-list">
       <ul>
         {movieComponents}
       </ul>
