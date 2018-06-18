@@ -17,19 +17,26 @@ class NewRentalContainer extends Component {
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
     }),
+    setStatus: PropTypes.func.isRequired,
   }
 
   onCheckOutButtonClick = () => {
     console.log("Checking out rental");
 
-    const url = checkOutUrl(this.props.selectedMovie.title, this.props.selectedCustomer.id);
+    const movie = this.props.selectedMovie;
+    const customer = this.props.selectedCustomer
+
+    const url = checkOutUrl(movie.title, customer.id);
     axios.post(url)
-      .then((response) => {
-        console.log("Successfully checked out");
+      .then(() => {
+        this.props.setStatus(
+          `Successfully checked out ${movie.title} to ${customer.name}`,
+          'success');
       })
       .catch((error) => {
-        console.log("Failed to check out");
-        console.log(error);
+        this.props.setStatus(
+          `Could not check out ${movie.title} to ${customer.name}: ${error.message}`,
+          'error');
       });
 
   }

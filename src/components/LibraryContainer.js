@@ -1,4 +1,5 @@
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import ItemList from './ItemList';
@@ -7,6 +8,10 @@ import Movie from './Movie';
 const LIBRARY_URL = 'http://localhost:3000/movies'
 
 class LibraryContainer extends React.Component {
+  static propTypes = {
+    selectMovie: PropTypes.func.isRequired,
+    setStatus: PropTypes.func.isRequired,
+  }
   constructor() {
     super();
 
@@ -18,14 +23,16 @@ class LibraryContainer extends React.Component {
   componentDidMount() {
     axios.get(LIBRARY_URL)
       .then((response) => {
-        console.log(response);
+        this.props.setStatus(`Successfully loaded ${response.data.length} movies from the rental library`, 'success');
+
         this.setState({
           movies: response.data
-        })
+        });
       })
       .catch((error) => {
         console.log('failure response');
         console.log(error);
+        this.props.setStatus(`Failed to load movies: ${error.message}`, 'success');
       });
   }
 

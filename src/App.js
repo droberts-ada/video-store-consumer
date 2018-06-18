@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom'
 import './App.css';
 
 import NavBar from './components/NavBar';
+import StatusBar from './components/StatusBar';
 import SearchContainer from './components/SearchContainer';
 import LibraryContainer from './components/LibraryContainer';
 import CustomersContainer from './components/CustomersContainer';
@@ -13,7 +14,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      
+      status: {
+        message: '',
+      }
     }
   }
 
@@ -29,22 +32,52 @@ class App extends Component {
     })
   }
 
+  setStatus = (message, type) => {
+    this.setState({
+      status: { message, type }
+    });
+  }
+
+  clearStatus = () => {
+    this.setState({ status: { message: '' }})
+  }
+
   render() {
     return (
       <div>
         <Route render={ () =>
-            <NavBar
-              selectedMovie={this.state.movie}
-              selectedCustomer={this.state.customer} />
-          } />
-        <Route path='/search' component={SearchContainer}/>
+            <header>
+              <NavBar
+                selectedMovie={this.state.movie}
+                selectedCustomer={this.state.customer}
+                setStatus={this.setStatus}
+                />
+              <StatusBar
+                {...this.state.status}
+                clearStatus={this.clearStatus}
+                />
+            </header>
+          }
+          />
+        <Route path='/search' render={ () =>
+            <SearchContainer setStatus={this.setStatus} />
+          }
+          />
         <Route path='/library'
           render={ () =>
-            <LibraryContainer selectMovie={this.selectMovie} />
-          } />
+            <LibraryContainer
+              selectMovie={this.selectMovie}
+              setStatus={this.setStatus}
+              />
+          }
+          />
         <Route path='/customers' render={ () =>
-            <CustomersContainer selectCustomer={this.selectCustomer} />
-          } />
+            <CustomersContainer
+              selectCustomer={this.selectCustomer}
+              setStatus={this.setStatus}
+              />
+          }
+          />
       </div>
     );
   }
