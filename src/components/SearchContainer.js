@@ -10,6 +10,9 @@ const SEARCH_URL = 'http://localhost:3000/movies?query=';
 const ADD_URL = 'http://localhost:3000/movies';
 
 class SearchContainer extends React.Component {
+  static propTypes = {
+    setStatus: PropTypes.func.isRequired
+  }
 
   constructor() {
     super();
@@ -20,16 +23,18 @@ class SearchContainer extends React.Component {
   }
 
   searchMovieByTitle = (title) => {
+    this.props.setStatus(`Searching for "${title}"...`, 'pending');
     console.log(`searching for ${title}`);
 
     axios.get(SEARCH_URL + title)
       .then((response) => {
-        console.log(response);
+        this.props.setStatus(`Found ${response.data.length} results for ${title}`, 'success');
         this.setState({
           movies: response.data
         })
       })
       .catch((error) => {
+        this.props.setStatus(`Could not search for "${title}": ${error.message}`, 'error');
         console.log('failure response');
         console.log(error);
       });
@@ -38,14 +43,17 @@ class SearchContainer extends React.Component {
   addMovieToLibrary = (external_id) => {
     const movie = this.state.movies.find(movie => movie.external_id === external_id);
 
-    console.log(`Adding movie ${movie.title} to library`);
+    this.props.setStatus(`Adding movie "${movie.title}" to library...`, 'pending');
 
     const url = ADD_URL + '?external_id=' + external_id;
     axios.post(url)
-      .then((response) => {
-        console.log('added movie successfully!');
+      .then(() => {
+        this.props.setStatus(
+          `Successfully added "${movie.title}" to library`, 'success');
       })
       .catch((error) => {
+        this.props.setStatus(
+          `Could not add "${movie.title}" to library: ${error.message}`, 'error');
         console.log('failure response');
         console.log(error);
       });

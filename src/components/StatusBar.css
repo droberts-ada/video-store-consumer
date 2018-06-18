@@ -16,6 +16,10 @@
   background-color: rgb(123, 249, 108);
 }
 
+.status-bar--pending {
+  background-color: rgb(147, 255, 255)
+}
+
 .status-bar__text {
   margin: .4em;
 }

@@ -6,7 +6,7 @@ import './StatusBar.css';
 class StatusBar extends React.Component {
   static propTypes = {
     message: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(['error', 'success']),
+    type: PropTypes.oneOf(['error', 'success', 'pending']),
     clearStatus: PropTypes.func.isRequired,
   }
 
@@ -16,10 +16,8 @@ class StatusBar extends React.Component {
     let className = "status-bar "
     if (this.props.message.length === 0) {
       className += "status-bar--hide"
-    } else if (this.props.type === 'error') {
-      className += "status-bar--error"
     } else {
-      className += "status-bar--success"
+      className += `status-bar--${this.props.type}`;
     }
     return(
       <div className={className}>
