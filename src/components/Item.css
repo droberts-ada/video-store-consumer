@@ -1,0 +1,17 @@
+.item {
+  border: 1px solid black;
+  border-radius: 1em;
+  overflow: hidden;
+  margin: 2em;
+
+  background-color: rgb(233, 233, 233);
+}
+
+.item__button {
+  background-color: rgb(207, 207, 207);
+  font-size: 18px;
+}
+
+.item__details {
+  padding: 0 1.5em;
+}

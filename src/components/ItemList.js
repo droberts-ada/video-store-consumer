@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './ItemList.css';
 
 const ItemList = ({items, ItemComponent, buttonText, buttonClickHandler}) => {
   const movieComponents = items.map((movie, i) => {
@@ -13,8 +14,8 @@ const ItemList = ({items, ItemComponent, buttonText, buttonClickHandler}) => {
     );
   });
   return (
-    <div className="item-list">
-      <ul>
+    <div className="item-list__container">
+      <ul className="item-list">
         {movieComponents}
       </ul>
     </div>
