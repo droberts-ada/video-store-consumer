@@ -7,6 +7,7 @@ import ItemList from './ItemList';
 import Movie from './Movie';
 
 const SEARCH_URL = 'http://localhost:3000/movies?query=';
+const ADD_URL = 'http://localhost:3000/movies';
 
 class SearchContainer extends React.Component {
 
@@ -34,11 +35,20 @@ class SearchContainer extends React.Component {
       });
   }
 
-  addMovieToLibrary = (movieId) => {
-    const movie = this.state.movies.find(movie => movie.external_id === movieId);
+  addMovieToLibrary = (external_id) => {
+    const movie = this.state.movies.find(movie => movie.external_id === external_id);
 
     console.log(`Adding movie ${movie.title} to library`);
-    // TODO: actually add the movie
+
+    const url = ADD_URL + '?external_id=' + external_id;
+    axios.post(url)
+      .then((response) => {
+        console.log('added movie successfully!');
+      })
+      .catch((error) => {
+        console.log('failure response');
+        console.log(error);
+      });
   }
 
   render() {
