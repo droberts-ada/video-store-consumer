@@ -21,6 +21,7 @@ class LibraryContainer extends React.Component {
   }
 
   componentDidMount() {
+    this.props.setStatus('Loading library...', 'pending');
     axios.get(LIBRARY_URL)
       .then((response) => {
         this.props.setStatus(`Successfully loaded ${response.data.length} movies from the rental library`, 'success');
@@ -37,9 +38,6 @@ class LibraryContainer extends React.Component {
   }
 
   selectMovie = (external_id) => {
-    console.log('Movie selected');
-    console.log(external_id);
-
     const movie = this.state.movies.find((movie) => movie.external_id === external_id )
 
     this.props.selectMovie(movie);
