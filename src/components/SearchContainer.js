@@ -3,7 +3,8 @@ import React from 'react';
 import axios from 'axios';
 
 import SearchBar from './SearchBar';
-import SearchResults from './SearchResults';
+import ItemList from './ItemList';
+import Movie from './Movie';
 
 const SEARCH_URL = 'http://localhost:3000/movies?query=';
 
@@ -44,9 +45,11 @@ class SearchContainer extends React.Component {
     return (
       <div className="item-list">
         <SearchBar searchCallback={this.searchMovieByTitle} />
-        <SearchResults
-          movies={this.state.movies}
-          addToLibraryCallback={this.addMovieToLibrary}
+        <ItemList
+          items={this.state.movies}
+          ItemComponent={Movie}
+          buttonText="Add to library"
+          buttonClickHandler={this.addMovieToLibrary}
           />
       </div>
     );

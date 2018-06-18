@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './Movie.css';
+
 const Movie = (props) => {
   return (
     <div className="movie">
       <img src={props.image_url} />
-      <h2>{props.title}</h2>
-      <p>{props.release_date}</p>
+      <div className="details">
+        <h2>{props.title}</h2>
+        <p>{props.release_date}</p>
+      </div>
       <button onClick={() => props.onButtonClick(props.external_id)}>
         {props.buttonText}
       </button>
