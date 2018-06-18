@@ -9,13 +9,42 @@ import LibraryContainer from './components/LibraryContainer';
 import CustomersContainer from './components/CustomersContainer';
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      
+    }
+  }
+
+  selectMovie = (movie) => {
+    this.setState({
+      movie
+    })
+  }
+
+  selectCustomer = (customer) => {
+    this.setState({
+      customer
+    })
+  }
+
   render() {
     return (
       <div>
-        <Route component={NavBar}/>
+        <Route render={ () =>
+            <NavBar
+              selectedMovie={this.state.movie}
+              selectedCustomer={this.state.customer} />
+          } />
         <Route path='/search' component={SearchContainer}/>
-        <Route path='/library' component={LibraryContainer}/>
-        <Route path='/customers' component={CustomersContainer}/>
+        <Route path='/library'
+          render={ () =>
+            <LibraryContainer selectMovie={this.selectMovie} />
+          } />
+        <Route path='/customers' render={ () =>
+            <CustomersContainer selectCustomer={this.selectCustomer} />
+          } />
       </div>
     );
   }

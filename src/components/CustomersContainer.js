@@ -29,9 +29,14 @@ class CustomersContainer extends React.Component {
     });
   }
 
-  selectCustomer = (customer) => {
+  selectCustomer = (customer_id) => {
     console.log('Customer selected');
-    console.log(customer);
+    console.log(customer_id);
+
+    const customer = this.state.customers.find((customer) => customer.id == customer_id )
+
+    this.props.selectCustomer(customer);
+
   }
 
   render() {

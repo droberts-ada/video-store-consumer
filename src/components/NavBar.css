@@ -1,3 +1,7 @@
+.navbar__nav {
+  display: inline-block;
+}
+
 .navbar__nav-item {
   padding-right: 1em;
 }

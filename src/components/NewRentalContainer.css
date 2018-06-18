@@ -1,0 +1,4 @@
+.new-rental, .new-rental__movie-selection, .new-rental__customer-selection, .new-rental__check-out-button {
+  display: inline;
+  padding-right: 1em;
+}
