@@ -2,6 +2,8 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
+import RentalSelection from './RentalSelection';
+
 import './NewRentalContainer.css'
 
 const checkOutUrl = (title, customer_id) => {
@@ -47,13 +49,16 @@ class NewRentalContainer extends Component {
 
     return (
       <div className='new-rental'>
-        <p className='new-rental__movie-selection'>
-          Selected Movie: {movieTitle}
-        </p>
-        <p className='new-rental__customer-selection'>
-          Selected Customer: {customerName}
-        </p>
-        <button className='new-rental__check-out-button'
+        <RentalSelection
+          selectionType="Movie"
+          name={movieTitle}
+          />
+        <RentalSelection
+          selectionType="Customer"
+          name={customerName}
+          />
+        <button
+          className='new-rental__check-out-button header__item'
           onClick={this.onCheckOutButtonClick}>
           Check Out New Rental
         </button>

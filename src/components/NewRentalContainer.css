@@ -1,4 +1,9 @@
-.new-rental, .new-rental__movie-selection, .new-rental__customer-selection, .new-rental__check-out-button {
-  display: inline;
-  padding-right: 1em;
+.new-rental {
+  display: flex;
+  justify-content: space-around;
+}
+
+.new-rental__check-out-button {
+  width: 4rem;
+  background-color: rgb(233, 233, 233);
 }

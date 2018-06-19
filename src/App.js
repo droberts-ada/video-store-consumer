@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom'
 import './App.css';
 
 import NavBar from './components/NavBar';
+import NewRentalContainer from './components/NewRentalContainer';
 import StatusBar from './components/StatusBar';
 import SearchContainer from './components/SearchContainer';
 import LibraryContainer from './components/LibraryContainer';
@@ -44,20 +45,23 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Route render={ () =>
-            <header>
-              <NavBar
-                selectedMovie={this.state.movie}
-                selectedCustomer={this.state.customer}
-                setStatus={this.setStatus}
-                />
+      <div className="video-store">
+        <Route render={ () => (
+            <header className="header">
+              <div className="header__controls">
+                <NavBar />
+                <NewRentalContainer
+                  selectedMovie={this.state.movie}
+                  selectedCustomer={this.state.customer}
+                  setStatus={this.setStatus}
+                  />
+              </div>
               <StatusBar
                 {...this.state.status}
                 clearStatus={this.clearStatus}
                 />
             </header>
-          }
+          )}
           />
         <Route path='/search' render={ () =>
             <SearchContainer setStatus={this.setStatus} />
