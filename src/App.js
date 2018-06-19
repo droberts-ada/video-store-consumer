@@ -63,11 +63,11 @@ class App extends Component {
             </header>
           )}
           />
-        <Route path='/search' render={ () =>
+        <Route path={process.env.PUBLIC_URL + '/search'} render={ () =>
             <SearchContainer setStatus={this.setStatus} />
           }
           />
-        <Route path='/library'
+        <Route path={process.env.PUBLIC_URL + '/library'}
           render={ () =>
             <LibraryContainer
               selectMovie={this.selectMovie}
@@ -75,7 +75,7 @@ class App extends Component {
               />
           }
           />
-        <Route path='/customers' render={ () =>
+        <Route path={process.env.PUBLIC_URL + '/customers'} render={ () =>
             <CustomersContainer
               selectCustomer={this.selectCustomer}
               setStatus={this.setStatus}
