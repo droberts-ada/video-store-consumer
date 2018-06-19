@@ -12,17 +12,17 @@ class NavBar extends Component {
     return (
       <div className='navbar'>
         <nav className='navbar__nav'>
-          <Link to="/search" className='navbar__nav-item header__item'>
+          <Link to={process.env.PUBLIC_URL + '/search'} className='navbar__nav-item header__item'>
             <img className="navbar__icon"
               src={searchIcon} />
             <label>Search</label>
           </Link>
-          <Link to="/library" className='navbar__nav-item header__item'>
+          <Link to={process.env.PUBLIC_URL + '/library'} className='navbar__nav-item header__item'>
             <img className="navbar__icon"
               src={libraryIcon} />
             <label>Library</label>
           </Link>
-          <Link to="/customers" className='navbar__nav-item header__item'>
+          <Link to={process.env.PUBLIC_URL + '/customers'} className='navbar__nav-item header__item'>
             <img className="navbar__icon"
               src={customersIcon} />
             <label>Customers</label>
