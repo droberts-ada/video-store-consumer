@@ -5,7 +5,7 @@ import React from 'react';
 import ItemList from './ItemList';
 import Customer from './Customer';
 
-const CUSTOMERS_URL = 'http://localhost:3000/customers'
+const CUSTOMERS_URL = 'https://ada-video-store-api.herokuapp.com/customers'
 
 class CustomersContainer extends React.Component {
   static propTypes = {

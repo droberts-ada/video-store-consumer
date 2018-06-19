@@ -6,8 +6,8 @@ import SearchBar from './SearchBar';
 import ItemList from './ItemList';
 import Movie from './Movie';
 
-const SEARCH_URL = 'http://localhost:3000/movies?query=';
-const ADD_URL = 'http://localhost:3000/movies';
+const SEARCH_URL = 'https://ada-video-store-api.herokuapp.com/movies?query=';
+const ADD_URL = 'https://ada-video-store-api.herokuapp.com/movies';
 
 class SearchContainer extends React.Component {
   static propTypes = {

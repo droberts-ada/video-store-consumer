@@ -5,7 +5,7 @@ import React from 'react';
 import ItemList from './ItemList';
 import Movie from './Movie';
 
-const LIBRARY_URL = 'http://localhost:3000/movies'
+const LIBRARY_URL = 'https://ada-video-store-api.herokuapp.com/movies'
 
 class LibraryContainer extends React.Component {
   static propTypes = {

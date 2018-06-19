@@ -7,7 +7,7 @@ import RentalSelection from './RentalSelection';
 import './NewRentalContainer.css'
 
 const checkOutUrl = (title, customer_id) => {
-  return `http://localhost:3000/rentals/${title}/check-out?customer_id=${customer_id};`
+  return `https://ada-video-store-api.herokuapp.com/rentals/${title}/check-out?customer_id=${customer_id};`
 }
 
 class NewRentalContainer extends Component {
