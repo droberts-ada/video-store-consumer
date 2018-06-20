@@ -22,17 +22,27 @@ class CustomersContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.props.setStatus('Loading customers...', 'pending');
+    this.props.setStatus(
+      'Loading customers...',
+      'pending'
+    );
+
     axios.get(CUSTOMERS_URL)
     .then((response) => {
       console.log(response);
       this.setState({
         customers: response.data
       });
-      this.props.setStatus(`Loaded ${response.data.length} customers`, 'success');
+      this.props.setStatus(
+        `Loaded ${response.data.length} customers`,
+        'success'
+      );
     })
     .catch((error) => {
-      this.props.setStatus(`Failed to load customers: ${error.message}`, 'error');
+      this.props.setStatus(
+        `Failed to load customers: ${error.message}`,
+        'error'
+      );
       console.log('failure response');
       console.log(error);
     });

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import './RentalSelection.css';
@@ -13,6 +14,11 @@ const RentalSelection = ({selectionType, name}) => {
       </p>
     </div>
   )
+}
+
+RentalSelection.propTypes = {
+  selectionType: PropTypes.oneOf(['movie', 'customer']),
+  name: PropTypes.string.isRequired,
 }
 
 export default RentalSelection;

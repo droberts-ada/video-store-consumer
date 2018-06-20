@@ -24,7 +24,10 @@ class LibraryContainer extends React.Component {
     this.props.setStatus('Loading library...', 'pending');
     axios.get(LIBRARY_URL)
       .then((response) => {
-        this.props.setStatus(`Successfully loaded ${response.data.length} movies from the rental library`, 'success');
+        this.props.setStatus(
+          `Successfully loaded ${response.data.length} movies from the rental library`,
+          'success'
+        );
 
         this.setState({
           movies: response.data
@@ -33,7 +36,10 @@ class LibraryContainer extends React.Component {
       .catch((error) => {
         console.log('failure response');
         console.log(error);
-        this.props.setStatus(`Failed to load movies: ${error.message}`, 'success');
+        this.props.setStatus(
+          `Failed to load movies: ${error.message}`,
+          'success'
+        );
       });
   }
 

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './ItemList.css';
 
 const ItemList = ({items, ItemComponent, buttonText, buttonClickHandler}) => {
-  const movieComponents = items.map((movie, i) => {
+  const itemComponents = items.map((movie, i) => {
     return (
       <ItemComponent key={i}
         {...movie}
@@ -16,7 +16,7 @@ const ItemList = ({items, ItemComponent, buttonText, buttonClickHandler}) => {
   return (
     <div className="item-list__container">
       <ul className="item-list">
-        {movieComponents}
+        {itemComponents}
       </ul>
     </div>
   );
